@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+    </style>
     <link
       rel="stylesheet"
       href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css"
@@ -19,13 +22,68 @@
     <title>TO DO List</title>
   </head>
   <body>
-    <i class="fi fi-sr-settings"></i>
-    <i class="fi fi-br-users-alt"></i>
-    <i class="fi fi-br-circle-user"></i>
-    <i class="fi fi-br-edit"></i>
-    <i class="fi fi-rr-list-check"></i>
-    <i class="fi fi-rr-comment"></i>
-    <i class="fi fi-rr-calendar"></i>
+    <div class="container">
+      <section class="lateral">
+        <!-- Contenido de la sección lateral -->
+        <div class="lateral-header">
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 28 28"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="14" cy="14" r="14" fill="#05A5FB" />
+            <g clip-path="url(#clip0_25_3)">
+              <path
+                d="M20.314 7.686C19.8681 7.25996 19.2752 7.02222 18.6585 7.02222C18.0418 7.02222 17.4489 7.25996 17.003 7.686L7.93976 16.7492C7.64104 17.0463 7.40418 17.3997 7.24288 17.7889C7.08157 18.1781 6.99903 18.5954 7.00001 19.0167V20.125C7.00001 20.3571 7.0922 20.5796 7.25629 20.7437C7.42038 20.9078 7.64294 21 7.87501 21H8.98334C9.40483 21.0011 9.82236 20.9187 10.2118 20.7574C10.6012 20.596 10.9547 20.3591 11.2519 20.0602L20.314 10.997C20.7524 10.5576 20.9987 9.96222 20.9987 9.3415C20.9987 8.72078 20.7524 8.1254 20.314 7.686ZM10.0135 18.823C9.73957 19.0952 9.3695 19.2486 8.98334 19.25H8.75001V19.0167C8.75121 18.6301 8.90461 18.2596 9.17701 17.9853L15.925 11.2391L16.7609 12.075L10.0135 18.823ZM19.075 9.75975L17.9982 10.8383L17.1617 10.0018L18.2408 8.925C18.3534 8.81742 18.5031 8.75739 18.6588 8.75739C18.8145 8.75739 18.9642 8.81742 19.0768 8.925C19.1868 9.03616 19.2483 9.18634 19.248 9.34274C19.2477 9.49913 19.1855 9.64905 19.075 9.75975Z"
+                fill="white"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_25_3">
+                <rect
+                  width="14"
+                  height="14"
+                  fill="white"
+                  transform="translate(7 7)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+          <h1>Tasks</h1>
+        </div>
+        <div class="menu-lateral">
+          <h2>Proyectos</h2>
+
+          <div class="project-button">
+            <button class="btn-nuevo">
+              <i class="fi fi-br-square-plus" id="nuevo"></i>
+              <h2>Nuevo proyecto</h2>
+            </button>
+          </div>
+        </div>
+        <div class="divider"></div>
+      </section>
+
+      <div class="principal">
+        <div class="titulo">
+          <!-- Contenido del título -->
+          <h1>Agenda de tareas</h1>
+        </div>
+
+        <nav>
+          <a href="#">Tareas</a>
+          <a href="#">Por hacer</a>
+          <a href="#">En proceso</a>
+          <a href="#">Completadas</a>
+        </nav>
+
+        <div class="contenido">
+          <!-- Contenido principal -->
+        </div>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
