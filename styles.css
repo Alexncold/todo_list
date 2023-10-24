@@ -52,10 +52,28 @@ html {
 
 .titulo {
   height: 76px;
-
+  justify-content: space-between;
   display: flex;
   align-items: center;
   padding-left: 30px;
+  padding-right: 30px;
+}
+
+.crear-tarea-btn {
+  width: 105px;
+  height: 38px;
+  background-color: #05a5fb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Suaviza la transición de color al hacer hover */
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.crear-tarea-btn:hover {
+  background-color: #0487d1; /* Color un poco más oscuro al hacer hover */
 }
 
 h1 {
@@ -101,13 +119,16 @@ nav a:last-child {
   min-width: 190px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   font-size: 18px;
   cursor: pointer;
+  height: 40px;
 }
 
 #nuevo {
   margin-right: 16px;
-  margin-left: 10px;
+  margin-left: 5px;
+  height: 18px;
 }
 
 .menu-lateral {
@@ -116,8 +137,45 @@ nav a:last-child {
 
 .divider {
   width: calc(100% - 40px);
-  margin: 20px;
+  margin: 30px 20px;
   height: 1px;
   background: #d9d9d9;
+}
+
+.menu-section {
+  margin-top: 20px;
+  margin-left: 20px;
+  color: #8e8e8e;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center; /* Alineación vertical del SVG y el texto */
+
+  text-decoration: none;
+  margin-bottom: 15px; /* Espacio entre enlaces */
+}
+
+.menu-link:visited {
+  color: #8e8e8e;
+}
+
+.menu-link svg {
+  margin-right: 10px; /* Espacio entre el SVG y el texto */
+}
+
+#h2-menu {
+  padding-bottom: 16px;
+  font-size: 16px;
+}
+
+.a-a-menu {
+  height: 18px;
+  margin-right: 10px;
+}
+
+.menu-a {
+  font-size: 18px;
+  font-weight: 600;
 }
 
