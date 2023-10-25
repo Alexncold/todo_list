@@ -176,3 +176,37 @@ nav a:last-child {
   font-weight: 600;
   color: #8e8e8e;
 }
+
+.modal-tarea {
+  position: fixed;
+  top: 0; /* Ajusta aquí para que inicie desde el borde superior del viewport */
+  right: -340px;
+  width: 340px;
+  bottom: 0;
+  background-color: #5f2a2a;
+  overflow-y: auto;
+  transition: right 0.3s;
+  z-index: 1000;
+}
+/* Clase que moverá el modal a la vista */
+.modal-tarea.show {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Color negro con 70% de opacidad */
+  z-index: 999; /* Aseguramos que esté debajo del modal pero sobre el resto del contenido */
+  display: none; /* Inicialmente oculto */
+  opacity: 0; /* Comienza completamente transparente */
+  transition: opacity 0.3s; /* Transición suave de la opacidad */
+}
+
+/* Cuando el modal esté visible, mostramos también el overlay */
+.modal-tarea.show + .overlay {
+  opacity: 1; /* Se vuelve completamente opaco */
+}
