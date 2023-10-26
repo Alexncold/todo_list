@@ -57,6 +57,7 @@ html {
   align-items: center;
   padding-left: 30px;
   padding-right: 30px;
+  flex-shrink: 0;
 }
 
 .crear-tarea-btn {
@@ -90,7 +91,7 @@ nav {
   align-items: center;
   padding-left: 30px;
   height: 44px;
-
+  flex-shrink: 0;
   border-bottom: 1px solid #e8e8e8;
 }
 
@@ -106,7 +107,18 @@ nav a:last-child {
 }
 
 .contenido {
-  flex: 1;
+  flex-grow: 1;
+}
+
+.custom-column {
+  width: 348px;
+  height: 700px;
+  margin-top: 20px; /* separación con el borde inferior del nav */
+  margin-left: 20px; /* separación con el borde derecho de la sección "lateral" */
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background-color: #fbfbfb;
+  border: 1px solid #e8e8e8;
 }
 
 .btn-nuevo {
@@ -210,3 +222,47 @@ nav a:last-child {
 .modal-tarea.show + .overlay {
   opacity: 1; /* Se vuelve completamente opaco */
 }
+
+.card-task {
+  background-color: white;
+  margin: 10px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
+}
+
+.priority-indicator {
+  width: 44px;
+  height: 24px;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+h3 {
+  margin-top: 10px; /* Espacio entre el div anterior y el h3 */
+  margin-bottom: 10px; /* Espacio entre el h3 y los íconos/texto siguientes */
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.datos {
+  color: #8e8e8e;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.task-details {
+  display: flex;
+  align-items: center; /* Alinea verticalmente los íconos y el texto */
+}
+
+.task-details .separator {
+  width: 18px; /* Espacio entre los íconos y el texto */
+  display: inline-block;
+}
+
+/* Considera añadir más estilos si necesitas ajustes adicionales. */
