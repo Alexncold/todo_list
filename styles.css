@@ -192,10 +192,10 @@ nav a:last-child {
 .modal-tarea {
   position: fixed;
   top: 0; /* Ajusta aquí para que inicie desde el borde superior del viewport */
-  right: -340px;
-  width: 340px;
+  right: -440px;
+  width: 440px;
   bottom: 0;
-  background-color: #5f2a2a;
+  background-color: #fff;
   overflow-y: auto;
   transition: right 0.3s;
   z-index: 1000;
@@ -229,12 +229,13 @@ nav a:last-child {
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   border: 1px solid #e8e8e8;
+  padding: 10px 10px 20px 10px;
 }
 
 .priority-indicator {
   width: 44px;
   height: 24px;
-  background-color: orange;
+  background-color: rgb(24, 137, 157);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -243,8 +244,8 @@ nav a:last-child {
 }
 
 h3 {
-  margin-top: 10px; /* Espacio entre el div anterior y el h3 */
-  margin-bottom: 10px; /* Espacio entre el h3 y los íconos/texto siguientes */
+  margin-top: 12px; /* Espacio entre el div anterior y el h3 */
+  margin-bottom: 12px; /* Espacio entre el h3 y los íconos/texto siguientes */
   font-size: 16px;
   font-weight: 600;
 }
@@ -255,14 +256,147 @@ h3 {
   font-weight: 600;
 }
 
+.datos-icon {
+  margin-right: 5px;
+}
+
+.active {
+  font-weight: 600;
+}
+
 .task-details {
   display: flex;
   align-items: center; /* Alinea verticalmente los íconos y el texto */
 }
 
-.task-details .separator {
+.separator {
   width: 18px; /* Espacio entre los íconos y el texto */
-  display: inline-block;
 }
 
-/* Considera añadir más estilos si necesitas ajustes adicionales. */
+.fecha-items {
+  padding-bottom: 1px;
+}
+
+.input-group {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+}
+
+.modal-content {
+  position: relative; /* Este es necesario porque estamos usando posicionamiento absoluto para el modal-footer */
+  height: 90vh; /* Establece la altura basada en la altura de la ventana */
+  padding: 0px 30px 20px 30px;
+  overflow-y: auto; /* Esto mostrará una barra de desplazamiento si el contenido se desborda */
+}
+
+.modal-content label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px; /* Espaciado para una mejor apariencia */
+  margin-bottom: 10px;
+}
+
+.objetivo-buttons {
+  display: flex;
+  margin-top: 10px;
+}
+
+.objetivo-input {
+  margin-top: 10px;
+}
+
+#agregar-objetivo,
+#quitar-objetivo {
+  margin-right: 35px;
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  outline: none;
+  text-decoration: underline; /* Añade un subrayado al texto */
+}
+
+#agregar-objetivo {
+  color: #05a5fb;
+}
+
+#quitar-objetivo {
+  color: #8a8a8a;
+}
+
+.modal-footer {
+  position: absolute; /* Mantendrá el modal-footer en el fondo */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fbfbfb;
+  border-top: 1px solid #e8e8e8;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 10vh;
+  padding: 0 20px; /* padding a los lados para mantener la estética */
+}
+
+.modal-footer button {
+  margin-left: 10px;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid #05a5fb;
+}
+
+.modal-content input[type="text"],
+.modal-content select,
+.modal-content textarea {
+  height: 40px;
+  background-color: #fbfbfb;
+  border: 2px solid #e8e8e8;
+  border-radius: 5px;
+}
+
+.modal-content textarea {
+  height: 70px;
+  font-family: "Inter", sans-serif; /* Aseguramos que utilice la fuente Inter */
+}
+
+/* Estilo para el texto placeholder del textarea */
+.modal-content textarea::placeholder {
+  font-family: "Inter", sans-serif; /* Aseguramos que utilice la fuente Inter */
+  padding-top: 10px;
+  padding-left: 10px;
+  color: #8a8a8a;
+}
+
+#btn-crear {
+  background-color: #05a5fb;
+  color: white;
+  transition: background-color 0.3s; /* Transición suave al hacer hover */
+}
+
+#btn-crear:hover {
+  background-color: #0487d1;
+}
+
+/* Estilos para los botones "Crear y agregar otra" y "Cancelar" */
+#btn-crear-otro,
+#btn-cancelar {
+  background-color: white;
+  color: #05a5fb;
+  transition: background-color 0.3s; /* Transición suave al hacer hover */
+}
+
+#btn-crear-otro:hover,
+#btn-cancelar:hover {
+  background-color: #e3f5ff;
+}
