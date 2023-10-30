@@ -2,11 +2,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const navLinks = document.querySelectorAll(".principal nav a");
 
   navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevendrá el comportamiento predeterminado del enlace
+
+      // Elimina la clase 'active' de todos los enlaces
       navLinks.forEach((innerLink) => {
-        innerLink.style.fontWeight = "400"; // restablece todos los enlaces a 400
+        innerLink.classList.remove("active");
       });
-      link.style.fontWeight = "600"; // establece el enlace clicado a 600
+
+      // Añade la clase 'active' al enlace que se acaba de hacer clic
+      link.classList.add("active");
     });
   });
 });
@@ -33,5 +38,32 @@ document.addEventListener("DOMContentLoaded", function () {
     modalTarea.classList.remove("show");
     overlay.style.opacity = "0";
     setTimeout(() => (overlay.style.display = "none"), 300);
+  });
+  const agregarObjetivoBtn = document.getElementById("agregar-objetivo");
+  const quitarObjetivoBtn = document.getElementById("quitar-objetivo");
+  let objetivoCount = 1; // Ya hay un objetivo por defecto
+
+  agregarObjetivoBtn.addEventListener("click", function () {
+    const nuevoObjetivo = document.createElement("input");
+    nuevoObjetivo.type = "text";
+    nuevoObjetivo.id = "objetivo-" + objetivoCount;
+    nuevoObjetivo.classList.add("objetivo-input");
+
+    const parentDiv = document.querySelector(".objetivos-container");
+    parentDiv.appendChild(nuevoObjetivo);
+
+    objetivoCount++;
+  });
+
+  quitarObjetivoBtn.addEventListener("click", function () {
+    if (objetivoCount > 1) {
+      // Si hay más de un objetivo
+      const objetivoToRemove = document.getElementById(
+        "objetivo-" + (objetivoCount - 1)
+      );
+      objetivoToRemove.remove();
+
+      objetivoCount--;
+    }
   });
 });
