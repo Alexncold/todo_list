@@ -97,11 +97,15 @@
         </div>
 
         <nav>
-          <a href="#" class="active">Tareas</a>
-          <a href="#">Por hacer</a>
-          <a href="#">En proceso</a>
-          <a href="#">Completadas</a>
+          <a href="#" data-content="tareas" class="active">Tareas</a>
+          <a href="#" data-content="por-hacer">Por hacer</a>
+          <a href="#" data-content="en-proceso">En proceso</a>
+          <a href="#" data-content="completadas">Completadas</a>
         </nav>
+        <div class="contenido" id="tareas">Contenido de Tareas</div>
+        <div class="contenido" id="por-hacer">Contenido de Por Hacer</div>
+        <div class="contenido" id="en-proceso">Contenido de En Proceso</div>
+        <div class="contenido" id="completadas">Contenido de Completadas</div>
 
         <div class="contenido">
           <!-- Contenido principal -->
@@ -109,6 +113,7 @@
             <div class="card-task">
               <div class="priority-indicator">Baja</div>
               <h3>Titulo placeholder</h3>
+              <p id="comentarios">Comentarios</p>
               <div class="task-details">
                 <i class="fi fi-rr-calendar datos datos-icon"></i>
                 <span class="datos fecha-items">Fecha</span>
@@ -145,6 +150,15 @@
         <div class="objetivo-buttons">
           <button id="agregar-objetivo">Agregar objetivo</button>
           <button id="quitar-objetivo">Quitar objetivo</button>
+        </div>
+
+        <div class="input-group">
+          <label for="estado">Estado</label>
+          <select id="estado">
+            <option value="por-hacer">Por hacer</option>
+            <option value="en-proceso">En proceso</option>
+            <option value="completadas">Completadas</option>
+          </select>
         </div>
 
         <div class="input-group">
