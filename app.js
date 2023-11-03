@@ -1,52 +1,54 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".principal nav a");
 
   navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevendrá el comportamiento predeterminado del enlace
-
-      // Elimina la clase 'active' de todos los enlaces
-      navLinks.forEach((innerLink) => {
-        innerLink.classList.remove("active");
-      });
-
-      // Añade la clase 'active' al enlace que se acaba de hacer clic
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      navLinks.forEach((innerLink) => innerLink.classList.remove("active"));
       link.classList.add("active");
+      // Obtener el identificador del contenido correspondiente
+      const contenidoId = link.getAttribute("data-content");
+
+      // Ocultar todos los contenidos
+      const contenidos = document.querySelectorAll(".contenido");
+      contenidos.forEach((contenido) => (contenido.style.display = "none"));
+
+      // Mostrar el contenido correspondiente
+      const contenidoMostrar = document.getElementById(contenidoId);
+      if (contenidoMostrar) {
+        contenidoMostrar.style.display = "block";
+      }
     });
   });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
   const crearTareaBtn = document.querySelector(".crear-tarea-btn");
   const modalTarea = document.querySelector(".modal-tarea");
   const overlay = document.querySelector(".overlay");
 
-  crearTareaBtn.addEventListener("click", function () {
+  const toggleModal = () => {
     if (modalTarea.classList.contains("show")) {
       modalTarea.classList.remove("show");
-      overlay.style.opacity = "0"; // oculta el overlay cuando el modal se oculta
-      setTimeout(() => (overlay.style.display = "none"), 300); // asegura que el display se cambie después de la transición
+      overlay.style.opacity = "0";
+      setTimeout(() => (overlay.style.display = "none"), 300);
     } else {
       modalTarea.classList.add("show");
-      overlay.style.display = "block"; // muestra el overlay
-      setTimeout(() => (overlay.style.opacity = "1"), 10); // se asegura de que el cambio de opacidad ocurra después de que se muestra el overlay
+      overlay.style.display = "block";
+      setTimeout(() => (overlay.style.opacity = "1"), 10);
     }
-  });
+  };
 
-  // Añadimos un oyente de eventos al overlay para cerrar el modal
-  overlay.addEventListener("click", function () {
-    modalTarea.classList.remove("show");
-    overlay.style.opacity = "0";
-    setTimeout(() => (overlay.style.display = "none"), 300);
-  });
+  crearTareaBtn.addEventListener("click", toggleModal);
+
+  overlay.addEventListener("click", toggleModal);
+
   const agregarObjetivoBtn = document.getElementById("agregar-objetivo");
   const quitarObjetivoBtn = document.getElementById("quitar-objetivo");
-  let objetivoCount = 1; // Ya hay un objetivo por defecto
+  let objetivoCount = 1;
 
-  agregarObjetivoBtn.addEventListener("click", function () {
+  agregarObjetivoBtn.addEventListener("click", () => {
     const nuevoObjetivo = document.createElement("input");
     nuevoObjetivo.type = "text";
-    nuevoObjetivo.id = "objetivo-" + objetivoCount;
+    nuevoObjetivo.id = `objetivo-${objetivoCount}`;
     nuevoObjetivo.classList.add("objetivo-input");
 
     const parentDiv = document.querySelector(".objetivos-container");
@@ -55,14 +57,12 @@ document.addEventListener("DOMContentLoaded", function () {
     objetivoCount++;
   });
 
-  quitarObjetivoBtn.addEventListener("click", function () {
+  quitarObjetivoBtn.addEventListener("click", () => {
     if (objetivoCount > 1) {
-      // Si hay más de un objetivo
       const objetivoToRemove = document.getElementById(
-        "objetivo-" + (objetivoCount - 1)
+        `objetivo-${objetivoCount - 1}`
       );
       objetivoToRemove.remove();
-
       objetivoCount--;
     }
   });
