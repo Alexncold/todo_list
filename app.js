@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Mostrar el contenido correspondiente
       const contenidoMostrar = document.getElementById(contenidoId);
       if (contenidoMostrar) {
-        contenidoMostrar.style.display = "block";
+        contenidoMostrar.style.display = "flex";
       }
     });
   });
@@ -66,4 +66,48 @@ document.addEventListener("DOMContentLoaded", () => {
       objetivoCount--;
     }
   });
+});
+
+///////////////////////////////////////////////////////////////
+
+// Obtén una referencia al botón "Crear" en el modal
+const btnCrear = document.getElementById("btn-crear");
+// Obtén una referencia al modal-tarea
+const modalTarea = document.querySelector(".modal-tarea");
+
+// Agrega un evento de clic al botón "Crear"
+btnCrear.addEventListener("click", () => {
+  // Obtén el valor de la prioridad seleccionada en el modal-tarea
+  const prioridadSelect = document.getElementById("prioridad");
+  const prioridad = prioridadSelect.value;
+
+  // Actualiza la prioridad en la card-task
+  const priorityIndicator = document.querySelector(
+    ".card-task .priority-indicator"
+  );
+
+  // Aplica diferentes estilos de acuerdo a la prioridad
+  switch (prioridad) {
+    case "baja":
+      priorityIndicator.textContent = "Baja";
+      priorityIndicator.style.backgroundColor = "#EAF5EB";
+      priorityIndicator.style.color = "#178D24";
+      break;
+    case "media":
+      priorityIndicator.textContent = "Media";
+      priorityIndicator.style.backgroundColor = "#FCF3EB";
+      priorityIndicator.style.color = "#EA9D57";
+      break;
+    case "alta":
+      priorityIndicator.textContent = "Alta";
+      priorityIndicator.style.backgroundColor = "#FBEAEA";
+      priorityIndicator.style.color = "#DB3E3E";
+      break;
+  }
+
+  // Oculta el modal-tarea
+  modalTarea.classList.remove("show");
+
+  // Otras acciones que desees realizar al hacer clic en "Crear"
+  // Por ejemplo, guardar la tarea, etc.
 });
