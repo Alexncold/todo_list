@@ -102,28 +102,10 @@
           <a href="#" data-content="en-proceso">En proceso</a>
           <a href="#" data-content="completadas">Completadas</a>
         </nav>
-        <div class="contenido" id="tareas">Contenido de Tareas</div>
-        <div class="contenido" id="por-hacer">Contenido de Por Hacer</div>
-        <div class="contenido" id="en-proceso">Contenido de En Proceso</div>
-        <div class="contenido" id="completadas">Contenido de Completadas</div>
-
-        <div class="contenido">
-          <!-- Contenido principal -->
-          <div class="custom-column">
-            <div class="card-task">
-              <div class="priority-indicator">Baja</div>
-              <h3>Titulo placeholder</h3>
-              <p id="comentarios">Comentarios</p>
-              <div class="task-details">
-                <i class="fi fi-rr-calendar datos datos-icon"></i>
-                <span class="datos fecha-items">Fecha</span>
-                <span class="separator"></span>
-                <i class="fi fi-rr-list-check datos datos-icon"></i>
-                <span class="datos fecha-items">0/0</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="contenido" id="tareas"></div>
+        <div class="contenido" id="por-hacer"></div>
+        <div class="contenido" id="en-proceso"></div>
+        <div class="contenido" id="completadas"></div>
       </div>
     </div>
     <div class="overlay"></div>
@@ -132,9 +114,9 @@
         <div class="input-group">
           <label for="prioridad">Prioridad</label>
           <select id="prioridad">
-            <option value="baja">Baja</option>
-            <option value="media">Media</option>
-            <option value="alta">Alta</option>
+            <option value="Baja">Baja</option>
+            <option value="Media">Media</option>
+            <option value="Alta">Alta</option>
           </select>
         </div>
 
@@ -175,6 +157,7 @@
         <button id="btn-cancelar">Cancelar</button>
       </div>
     </div>
+
     <script src="app.js"></script>
   </body>
 </html>
