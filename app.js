@@ -1,29 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".principal nav a");
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      navLinks.forEach((innerLink) => innerLink.classList.remove("active"));
-      link.classList.add("active");
-      // Obtener el identificador del contenido correspondiente
-      const contenidoId = link.getAttribute("data-content");
-
-      // Ocultar todos los contenidos
-      const contenidos = document.querySelectorAll(".contenido");
-      contenidos.forEach((contenido) => (contenido.style.display = "none"));
-
-      // Mostrar el contenido correspondiente
-      const contenidoMostrar = document.getElementById(contenidoId);
-      if (contenidoMostrar) {
-        contenidoMostrar.style.display = "flex";
-      }
-    });
-  });
-
   const crearTareaBtn = document.querySelector(".crear-tarea-btn");
   const modalTarea = document.querySelector(".modal-tarea");
   const overlay = document.querySelector(".overlay");
+  const agregarObjetivoBtn = document.getElementById("agregar-objetivo");
+  const quitarObjetivoBtn = document.getElementById("quitar-objetivo");
+  const btnCrear = document.getElementById("btn-crear");
+  let objetivoCount = 1;
+
+  const toggleActiveClass = (links, activeLink) => {
+    links.forEach((link) => link.classList.remove("active"));
+    activeLink.classList.add("active");
+  };
 
   const toggleModal = () => {
     if (modalTarea.classList.contains("show")) {
@@ -37,15 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  crearTareaBtn.addEventListener("click", toggleModal);
-
-  overlay.addEventListener("click", toggleModal);
-
-  const agregarObjetivoBtn = document.getElementById("agregar-objetivo");
-  const quitarObjetivoBtn = document.getElementById("quitar-objetivo");
-  let objetivoCount = 1;
-
-  agregarObjetivoBtn.addEventListener("click", () => {
+  const agregarObjetivo = () => {
     const nuevoObjetivo = document.createElement("input");
     nuevoObjetivo.type = "text";
     nuevoObjetivo.id = `objetivo-${objetivoCount}`;
@@ -55,9 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     parentDiv.appendChild(nuevoObjetivo);
 
     objetivoCount++;
-  });
+  };
 
-  quitarObjetivoBtn.addEventListener("click", () => {
+  const quitarObjetivo = () => {
     if (objetivoCount > 1) {
       const objetivoToRemove = document.getElementById(
         `objetivo-${objetivoCount - 1}`
@@ -65,49 +45,95 @@ document.addEventListener("DOMContentLoaded", () => {
       objetivoToRemove.remove();
       objetivoCount--;
     }
+  };
+
+  const crearTarea = () => {
+    const prioridad = document.getElementById("prioridad").value;
+    const tituloTarea = document.getElementById("titulo-tarea").value;
+    const comentarios = document.getElementById("comentarios").value;
+    const estado = document.getElementById("estado").value;
+    const fecha = new Date().toLocaleDateString();
+    const objetivos = document.querySelectorAll(".objetivo-input");
+
+    const colorMap = {
+      Alta: { fondo: "#FBEAEA", fuente: "#DB3E3E" },
+      Media: { fondo: "#FCF3EB", fuente: "#EA9D57" },
+      Baja: { fondo: "#EAF5EB", fuente: "#178D24" },
+    };
+
+    const colorPrioridad = colorMap[prioridad] || {};
+
+    const nuevaTarea = document.createElement("div");
+
+    nuevaTarea.innerHTML = `
+          <div class="card-task" >
+            <div class="priority-indicator" style="background-color: ${
+              colorPrioridad.fondo || ""
+            }; color: ${colorPrioridad.fuente || ""}">${prioridad}</div>
+            <h3>${tituloTarea}</h3>
+            <p>${comentarios}</p>
+            <div class="task-details">
+              <i class="fi fi-rr-calendar datos datos-icon"></i>
+              <span class="datos fecha-items">${fecha}</span>
+              <span class="separator"></span>
+              <i class="fi fi-rr-list-check datos datos-icon"></i>
+              <span class="datos fecha-items">0/${objetivos.length}</span>
+            </div>
+          </div>
+        `;
+
+    const contenidoMostrar = document.getElementById(estado);
+    contenidoMostrar.appendChild(nuevaTarea);
+
+    contenidoMostrar.style.flexDirection = "column";
+
+    document.getElementById("prioridad").value = "baja";
+    document.getElementById("titulo-tarea").value = "";
+    document.getElementById("comentarios").value = "";
+    document.getElementById("estado").value = "por-hacer";
+
+    objetivos.forEach((objetivo, index) => {
+      if (index !== 0) {
+        objetivo.remove();
+      } else {
+        objetivo.value = ""; // Restablecer el primer objetivo a un campo vacío
+      }
+    });
+
+    const tareaResumen = document.createElement("div");
+    tareaResumen.classList.add("tareas-all");
+
+    tareaResumen.innerHTML = `
+      <div class="priority-indicator" style="background-color: ${
+        colorPrioridad.fondo || ""
+      }; color: ${colorPrioridad.fuente || ""}">${prioridad}</div>
+      <h3>${tituloTarea}</h3>
+    `;
+
+    const tareasSection = document.getElementById("tareas");
+    tareasSection.appendChild(tareaResumen);
+    tareasSection.style.flexDirection = "column";
+
+    toggleModal();
+  };
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggleActiveClass(navLinks, link);
+      const contenidoId = link.getAttribute("data-content");
+      const contenidos = document.querySelectorAll(".contenido");
+      contenidos.forEach((contenido) => (contenido.style.display = "none"));
+      const contenidoMostrar = document.getElementById(contenidoId);
+      if (contenidoMostrar) {
+        contenidoMostrar.style.display = "flex";
+      }
+    });
   });
-});
 
-///////////////////////////////////////////////////////////////
-
-// Obtén una referencia al botón "Crear" en el modal
-const btnCrear = document.getElementById("btn-crear");
-// Obtén una referencia al modal-tarea
-const modalTarea = document.querySelector(".modal-tarea");
-
-// Agrega un evento de clic al botón "Crear"
-btnCrear.addEventListener("click", () => {
-  // Obtén el valor de la prioridad seleccionada en el modal-tarea
-  const prioridadSelect = document.getElementById("prioridad");
-  const prioridad = prioridadSelect.value;
-
-  // Actualiza la prioridad en la card-task
-  const priorityIndicator = document.querySelector(
-    ".card-task .priority-indicator"
-  );
-
-  // Aplica diferentes estilos de acuerdo a la prioridad
-  switch (prioridad) {
-    case "baja":
-      priorityIndicator.textContent = "Baja";
-      priorityIndicator.style.backgroundColor = "#EAF5EB";
-      priorityIndicator.style.color = "#178D24";
-      break;
-    case "media":
-      priorityIndicator.textContent = "Media";
-      priorityIndicator.style.backgroundColor = "#FCF3EB";
-      priorityIndicator.style.color = "#EA9D57";
-      break;
-    case "alta":
-      priorityIndicator.textContent = "Alta";
-      priorityIndicator.style.backgroundColor = "#FBEAEA";
-      priorityIndicator.style.color = "#DB3E3E";
-      break;
-  }
-
-  // Oculta el modal-tarea
-  modalTarea.classList.remove("show");
-
-  // Otras acciones que desees realizar al hacer clic en "Crear"
-  // Por ejemplo, guardar la tarea, etc.
+  crearTareaBtn.addEventListener("click", toggleModal);
+  overlay.addEventListener("click", toggleModal);
+  agregarObjetivoBtn.addEventListener("click", agregarObjetivo);
+  quitarObjetivoBtn.addEventListener("click", quitarObjetivo);
+  btnCrear.addEventListener("click", crearTarea);
 });
