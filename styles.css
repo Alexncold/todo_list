@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #05a5fb;
+  --secondary-color: #e8e8e8;
+  --tertiary-color: #fbfbfb;
+  --text-color: #333;
+  --hover-color: #0487d1;
+  --placeholder-color: #8a8a8a;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,29 +27,29 @@ html {
 .lateral {
   width: 20vw;
   height: 100%;
-  background-color: #fbfbfb;
-  border-right: 1px solid #e8e8e8;
+  background-color: var(--tertiary-color);
+  border-right: 1px solid var(--secondary-color);
 }
 
 .lateral-header {
   display: flex;
-  align-items: center; /* Alinea verticalmente el SVG y el h1 */
-  padding-left: 20px; /* Agrega padding a la izquierda */
+  align-items: center;
+  padding-left: 20px;
   height: 76px;
 }
 
 .lateral-header h1 {
-  margin-left: 10px; /* Agrega espacio entre el SVG y el h1 */
+  margin-left: 10px;
 }
 
 .principal .titulo,
 .principal nav,
 .principal .contenido {
-  background-color: #ffffff;
+  background-color: var(--tertiary-color);
 }
 
 .principal .titulo {
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--secondary-color);
 }
 
 .principal {
@@ -63,18 +72,18 @@ html {
 .crear-tarea-btn {
   width: 105px;
   height: 38px;
-  background-color: #05a5fb;
+  background-color: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Suaviza la transición de color al hacer hover */
+  transition: background-color 0.3s;
   font-size: 14px;
   font-weight: 600;
 }
 
 .crear-tarea-btn:hover {
-  background-color: #0487d1; /* Color un poco más oscuro al hacer hover */
+  background-color: var(--hover-color);
 }
 
 h1 {
@@ -92,12 +101,12 @@ nav {
   padding-left: 30px;
   height: 44px;
   flex-shrink: 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--secondary-color);
 }
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-color);
   margin-right: 30px;
   font-weight: 400;
 }
@@ -113,12 +122,10 @@ nav a:last-child {
 .custom-column {
   width: 348px;
   height: 700px;
-  margin-top: 20px; /* separación con el borde inferior del nav */
-  margin-left: 20px; /* separación con el borde derecho de la sección "lateral" */
-  margin-bottom: 20px;
+  margin: 20px;
   border-radius: 12px;
-  background-color: #fbfbfb;
-  border: 1px solid #e8e8e8;
+  background-color: var(--tertiary-color);
+  border: 1px solid var(--secondary-color);
 }
 
 .btn-nuevo {
@@ -162,14 +169,13 @@ nav a:last-child {
 
 .menu-link {
   display: flex;
-  align-items: center; /* Alineación vertical del SVG y el texto */
-
+  align-items: center;
   text-decoration: none;
-  margin-bottom: 15px; /* Espacio entre enlaces */
+  margin-bottom: 15px;
 }
 
 .menu-link svg {
-  margin-right: 10px; /* Espacio entre el SVG y el texto */
+  margin-right: 10px;
 }
 
 #h2-menu {
@@ -191,7 +197,7 @@ nav a:last-child {
 
 .modal-tarea {
   position: fixed;
-  top: 0; /* Ajusta aquí para que inicie desde el borde superior del viewport */
+  top: 0;
   right: -440px;
   width: 440px;
   bottom: 0;
@@ -200,7 +206,7 @@ nav a:last-child {
   transition: right 0.3s;
   z-index: 1000;
 }
-/* Clase que moverá el modal a la vista */
+
 .modal-tarea.show {
   right: 0;
 }
@@ -211,16 +217,15 @@ nav a:last-child {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3); /* Color negro con 70% de opacidad */
-  z-index: 999; /* Aseguramos que esté debajo del modal pero sobre el resto del contenido */
-  display: none; /* Inicialmente oculto */
-  opacity: 0; /* Comienza completamente transparente */
-  transition: opacity 0.3s; /* Transición suave de la opacidad */
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* Cuando el modal esté visible, mostramos también el overlay */
 .modal-tarea.show + .overlay {
-  opacity: 1; /* Se vuelve completamente opaco */
+  opacity: 1;
 }
 
 .card-task {
@@ -228,7 +233,7 @@ nav a:last-child {
   margin: 10px 10px 0 10px;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--secondary-color);
   padding: 10px 10px 20px 10px;
   width: 328px;
 }
@@ -236,7 +241,7 @@ nav a:last-child {
 .tareas-all {
   width: 328px;
   border-radius: 12px;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--secondary-color);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
   padding: 5px 10px 5px 10px;
   margin: 10px 10px 0 10px;
@@ -250,7 +255,7 @@ nav a:last-child {
 }
 
 #tareas {
-  display: flex; /* Mostrar el contenido "Tareas" inicialmente */
+  display: flex;
 }
 
 .priority-indicator {
@@ -267,8 +272,8 @@ nav a:last-child {
 }
 
 h3 {
-  margin-top: 12px; /* Espacio entre el div anterior y el h3 */
-  margin-bottom: 12px; /* Espacio entre el h3 y los íconos/texto siguientes */
+  margin-top: 12px;
+  margin-bottom: 12px;
   font-size: 16px;
   font-weight: 600;
 }
@@ -294,11 +299,11 @@ h3 {
 .task-details {
   margin-top: 10px;
   display: flex;
-  align-items: center; /* Alinea verticalmente los íconos y el texto */
+  align-items: center;
 }
 
 .separator {
-  width: 18px; /* Espacio entre los íconos y el texto */
+  width: 18px;
 }
 
 .fecha-items {
@@ -316,16 +321,16 @@ h3 {
 }
 
 .modal-content {
-  position: relative; /* Este es necesario porque estamos usando posicionamiento absoluto para el modal-footer */
-  height: 90vh; /* Establece la altura basada en la altura de la ventana */
+  position: relative;
+  height: 90vh;
   padding: 0px 30px 20px 30px;
-  overflow-y: auto; /* Esto mostrará una barra de desplazamiento si el contenido se desborda */
+  overflow-y: auto;
 }
 
 .modal-content label {
   font-size: 16px;
   font-weight: 600;
-  margin-top: 10px; /* Espaciado para una mejor apariencia */
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -348,11 +353,11 @@ h3 {
   padding: 0;
   font-family: "Inter", sans-serif;
   outline: none;
-  text-decoration: underline; /* Añade un subrayado al texto */
+  text-decoration: underline;
 }
 
 #agregar-objetivo {
-  color: #05a5fb;
+  color: var(--primary-color);
 }
 
 #quitar-objetivo {
@@ -360,17 +365,17 @@ h3 {
 }
 
 .modal-footer {
-  position: absolute; /* Mantendrá el modal-footer en el fondo */
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fbfbfb;
-  border-top: 1px solid #e8e8e8;
+  background-color: var(--tertiary-color);
+  border-top: 1px solid var(--secondary-color);
   display: flex;
   justify-content: flex-start;
   align-items: center;
   height: 10vh;
-  padding: 0 20px; /* padding a los lados para mantener la estética */
+  padding: 0 20px;
 }
 
 .modal-footer button {
@@ -381,47 +386,45 @@ h3 {
   border-radius: 5px;
   font-weight: 600;
   font-size: 14px;
-  border: 1px solid #05a5fb;
+  border: 1px solid var(--primary-color);
 }
 
 .modal-content input[type="text"],
 .modal-content select,
 .modal-content textarea {
   height: 40px;
-  background-color: #fbfbfb;
-  border: 2px solid #e8e8e8;
+  background-color: var(--tertiary-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 5px;
 }
 
 .modal-content textarea {
   height: 70px;
-  font-family: "Inter", sans-serif; /* Aseguramos que utilice la fuente Inter */
+  font-family: "Inter", sans-serif;
 }
 
-/* Estilo para el texto placeholder del textarea */
 .modal-content textarea::placeholder {
-  font-family: "Inter", sans-serif; /* Aseguramos que utilice la fuente Inter */
+  font-family: "Inter", sans-serif;
   padding-top: 10px;
   padding-left: 10px;
-  color: #8a8a8a;
+  color: var(--placeholder-color);
 }
 
 #btn-crear {
-  background-color: #05a5fb;
+  background-color: var(--primary-color);
   color: white;
-  transition: background-color 0.3s; /* Transición suave al hacer hover */
+  transition: background-color 0.3s;
 }
 
 #btn-crear:hover {
-  background-color: #0487d1;
+  background-color: var(--hover-color);
 }
 
-/* Estilos para los botones "Crear y agregar otra" y "Cancelar" */
 #btn-crear-otro,
 #btn-cancelar {
   background-color: white;
-  color: #05a5fb;
-  transition: background-color 0.3s; /* Transición suave al hacer hover */
+  color: var(--primary-color);
+  transition: background-color 0.3s;
 }
 
 #btn-crear-otro:hover,
